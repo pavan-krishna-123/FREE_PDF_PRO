@@ -1,0 +1,6 @@
+{
+  "name": "OpenPDF",
+  "description": "Professional offline-first PDF toolkit with tools for merging, splitting, compressing, protecting, signing, scanning, rotating, page reordering, and viewing PDFs.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

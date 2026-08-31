@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "metrics": {
+      "title": "Metrics",
+      "description": "Daily and overall PDF usage aggregation counters",
+      "type": "object",
+      "properties": {
+        "totalConversions": { "type": "number", "description": "Total PDF operations processed" },
+        "totalBytesProcessed": { "type": "number", "description": "Total byte volume processed" },
+        "bytesSaved": { "type": "number", "description": "Megabytes/bytes saved from compression" },
+        "signaturesGenerated": { "type": "number", "description": "Signatures drawn and embedded" },
+        "toolUsageBreakdown": { "type": "object", "description": "Breakdown of counts per tool" },
+        "lastUpdated": { "type": "string", "format": "date-time" }
+      },
+      "required": ["totalConversions"]
+    },
+    "activity_logs": {
+      "title": "Activity Logs",
+      "description": "Real-time records of tool operations",
+      "type": "object",
+      "properties": {
+        "tool": { "type": "string", "description": "Name or ID of the tool used" },
+        "action": { "type": "string", "description": "Operation action name" },
+        "status": { "type": "string", "enum": ["success", "failed"] },
+        "fileSize": { "type": "number", "description": "File size in bytes" },
+        "durationMs": { "type": "number", "description": "Processing duration in milliseconds" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "details": { "type": "string" }
+      },
+      "required": ["tool", "status", "timestamp"]
+    },
+    "admin_settings": {
+      "title": "Admin Settings",
+      "description": "System configuration flags",
+      "type": "object",
+      "properties": {
+        "maintenanceMode": { "type": "boolean" },
+        "allowAnonymousUsage": { "type": "boolean" },
+        "maxUploadSizeMb": { "type": "number" },
+        "logRetentionDays": { "type": "number" }
+      },
+      "required": ["maintenanceMode"]
+    },
+    "admins": {
+      "title": "Admins",
+      "description": "Registered administrator accounts and permissions",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "superadmin"] },
+        "enabled": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "lastLoginAt": { "type": "string", "format": "date-time" },
+        "lastLogoutAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    }
+  }
+}
